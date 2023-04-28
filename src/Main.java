@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class Main {
+    /**
+     * This is the main method
+     */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Scanner scan2 = new Scanner(System.in);
@@ -12,12 +15,12 @@ public class Main {
         if (o == 1) {
             System.out.println("What's your name:");
             String name = scan.nextLine();
-            System.out.println("What symbol do you want(X/0):");
+            System.out.println("What symbol do you want(X/O):");
             char symbol = scan2.next().charAt(0);
             HumanPlayer player1 = new HumanPlayer(name, symbol);
             char symbol2;
             if (symbol == 'X') {
-                symbol2 = '0';
+                symbol2 = 'O';
             } else {
                 symbol2 = 'X';
             }
@@ -27,7 +30,7 @@ public class Main {
                 while (!board.isFull()) {
                     player1.move(board);
                     board.displayBoard();
-                    if (board.whoWon() != ' ') {
+                    if (board.whoWon() != ' ' || board.isFull()) {
                         break;
                     }
                     System.out.println("Now is " + comp.getName() + "'s turn.");
@@ -42,7 +45,7 @@ public class Main {
                     System.out.println("Now is " + comp.getName() + "'s turn.");
                     comp.move(board);
                     board.displayBoard();
-                    if (board.whoWon() != ' ') {
+                    if (board.whoWon() != ' '|| board.isFull()) {
                         break;
                     }
                     player1.move(board);
@@ -72,7 +75,7 @@ public class Main {
             String name2 = scan.nextLine();
             char symbol2;
             if (symbol1 == 'X') {
-                symbol2 = '0';
+                symbol2 = 'O';
             } else {
                 symbol2 = 'X';
             }
@@ -84,7 +87,7 @@ public class Main {
                     System.out.println("Now is " + player1.getName() + "'s turn.");
                     player1.move(board);
                     board.displayBoard();
-                    if (board.whoWon() != ' ') {
+                    if (board.whoWon() != ' '|| board.isFull()) {
                         break;
                     }
                     System.out.println("Now is " + player2.getName() + "'s turn.");
@@ -100,7 +103,7 @@ public class Main {
                     System.out.println("Now is " + player2.getName() + "'s turn.");
                     player2.move(board);
                     board.displayBoard();
-                    if (board.whoWon() != ' ') {
+                    if (board.whoWon() != ' '|| board.isFull()) {
                         break;
                     }
                     System.out.println("Now is " + player1.getName() + "'s turn.");
